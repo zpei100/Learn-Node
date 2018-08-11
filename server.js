@@ -42,8 +42,8 @@ app.use((req, res, next) => {
 			console.log('Unable to append to server.log.')
 		}
 	})
-	res.render('maintnance.hbs')
-	// next()
+	// res.render('maintnance.hbs')
+	next()
 });
 
 
@@ -64,6 +64,10 @@ app.get('/', (req, res) => {
 		pageTitle: 'Welcome Page',	
 	})
 })
+
+app.get('/project', (req, res) => {
+	res.render('project.hbs')
+});
 
 // sets up the about route: localhost:3000/bad
 // using res.send is extremely inefficient, since you have to do it once for every "page"
