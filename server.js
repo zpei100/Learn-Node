@@ -2,6 +2,13 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+// process.env is a list of key value pairs for environment variables
+// this setup is necessary for heroku because
+// the port number needs to be dynamic?
+// the || 3000 is just there for local deployment
+const port = process.env.PORT || 3000;
+
+
 var app = express();
 
 // this tells hbs where to look, to find partials
@@ -84,7 +91,7 @@ app.get('/about', (req, res) => {
 })
 
 // adds a listener, uses a port number. The function input fires when server is up
-app.listen(3000, () => {
-	console.log('Server is up on port 3000')
+app.listen(port, () => {
+	console.log(`Server is up on por ${port}`);
 });
 
